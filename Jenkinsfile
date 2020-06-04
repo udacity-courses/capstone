@@ -9,11 +9,6 @@ pipeline {
                 mvn package
                 '''
             }
-            post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml'
-                }
-            }
         }
         stage('Test') {
             steps {
