@@ -18,6 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 println(' test application')
+                sh 'mvn test'
             }
         }
         stage('Publish') {
