@@ -22,6 +22,10 @@ pipeline {
         stage('Publish') {
             steps {
                 println('publish docker image')
+                sh '''
+                cd app/
+                mvn spring-boot:build-image
+                '''
             }
         }
         stage('Deploy'){
