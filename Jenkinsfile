@@ -5,6 +5,7 @@ pipeline {
             steps {
                 println('compile application')
                 sh '''
+                cd app/
                 mvn -Dmaven.test.failure.ignore=true package
                 '''
             }
