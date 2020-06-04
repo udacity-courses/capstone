@@ -13,7 +13,10 @@ pipeline {
         stage('Test') {
             steps {
                 println(' test application')
-                sh 'mvn test'
+                sh '''
+                cd app/
+                mvn test
+                '''
             }
         }
         stage('Publish') {
