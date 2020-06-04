@@ -23,12 +23,11 @@ pipeline {
             steps {
                 println('publish docker image')
                 sh '''
-                cd app/
-                mvn spring-boot:build-image
+                docker build anyulled/capstone:latest .
                 '''
             }
         }
-        stage('Deploy'){
+        stage('Deploy') {
             steps {
                 println('deploy to kubernetes')
             }
