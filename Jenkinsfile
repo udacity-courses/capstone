@@ -6,7 +6,7 @@ pipeline {
                 println('compile application')
                 sh '''
                 cd app/
-                mvn -Dmaven.test.failure.ignore=true package
+                mvn package
                 '''
             }
             post {
