@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+        registry = "anyulled/capstone"
+        registryCredential = 'dockerhub'
+    }
     stages {
         stage('Build') {
             steps {
@@ -23,7 +27,7 @@ pipeline {
             steps {
                 println('publish docker image')
                 sh '''
-                docker build anyulled/capstone:latest .
+                docker build -t anyulled/capstone:latest .
                 '''
             }
         }
