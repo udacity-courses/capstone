@@ -28,7 +28,7 @@ pipeline {
                 println('publish docker image')
                 sh '''
                 cd app/
-                ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=anyulled/capstone
+                build -t anyulled/capstone:latest .
                 '''
             }
         }
