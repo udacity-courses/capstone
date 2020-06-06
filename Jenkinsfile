@@ -28,7 +28,7 @@ pipeline {
                 println('publish docker image')
                 sh '''
                 cd app/
-                build -t anyulled/capstone:latest .
+                docker build -t anyulled/capstone:latest .
                 '''
             }
         }
