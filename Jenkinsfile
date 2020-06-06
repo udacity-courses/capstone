@@ -10,7 +10,7 @@ pipeline {
                 println('compile application')
                 sh '''
                 cd app/
-                mvn package
+                 mvn clean package -DskipTests=true
                 '''
             }
         }
@@ -27,7 +27,8 @@ pipeline {
             steps {
                 println('publish docker image')
                 sh '''
-                docker build -t anyulled/capstone:latest .
+                cd app/
+                ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=anyulled/capstone
                 '''
             }
         }
