@@ -5,7 +5,7 @@ pipeline {
         registryCredential = 'dockerhub'
     }
     stages {
-        stage('Build') {
+        stage('Build App') {
             steps {
                 println('compile application')
                 sh '''
@@ -23,7 +23,7 @@ pipeline {
                 '''
             }
         }
-        stage('Publish') {
+        stage('Build Image') {
             steps {
                 println('publish docker image')
                 sh '''
@@ -32,9 +32,25 @@ pipeline {
                 '''
             }
         }
-        stage('Deploy') {
+        stage('Push Image'){
             steps {
-                println('deploy to kubernetes')
+                sh 'docker push anyulled/capstone'
+            }
+        }
+        stage('Deploy - Green Service') {
+            steps {
+                println('set current kubectl context')
+                println('deploy container to green service')
+            }
+        }
+        stage('Blue/Green Deployment') {
+            steps {
+                input 'Deploy to Blue Service?'
+            }
+        }
+        stage('Deploy - Blue Service') {
+            steps {
+                println('deploy container to blue service')
             }
         }
     }
