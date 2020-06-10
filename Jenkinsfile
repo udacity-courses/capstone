@@ -36,9 +36,10 @@ pipeline {
         }
         stage('Push Image'){
             steps {
-                docker.withRegistry( '', registryCredential ) {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
-                      }
+                }
                 //sh 'docker push anyulled/capstone'
             }
         }
