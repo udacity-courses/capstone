@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        registry = "anyulled/capstone"
+        registry = 'anyulled/capstone'
         registryCredential = 'dockerhub'
     }
     stages {
@@ -34,13 +34,14 @@ pipeline {
                 }
             }
         }
-        stage('Push Image'){
+        stage('Push Image') {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
-                }
+                    }
                 //sh 'docker push anyulled/capstone'
+                }
             }
         }
         stage('Deploy - Green Service') {
@@ -60,9 +61,9 @@ pipeline {
             }
         }
         stage('Remove Unused docker image') {
-          steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
-          }
+            steps {
+                sh "docker rmi $registry:$BUILD_NUMBER"
+            }
         }
     }
 }
