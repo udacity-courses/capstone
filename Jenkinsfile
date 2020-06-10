@@ -29,7 +29,9 @@ pipeline {
                 sh '''
                 cd app/
                 '''
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
         stage('Push Image'){
