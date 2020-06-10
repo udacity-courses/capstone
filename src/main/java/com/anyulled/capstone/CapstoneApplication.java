@@ -5,8 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class CapstoneApplication {
-
-    public static void main(String[] args) {
+    /**
+     * Main application.
+     * @param args arguments.
+     */
+    public static void main(final String[] args) {
         SpringApplication.run(CapstoneApplication.class, args);
     }
 

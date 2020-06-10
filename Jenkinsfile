@@ -21,6 +21,11 @@ pipeline {
                 '''
             }
         }
+        stage('Check style') {
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+        }
         stage('Build Image') {
             steps {
                 println('publish docker image')
