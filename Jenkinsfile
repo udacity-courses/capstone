@@ -28,13 +28,16 @@ pipeline {
                 println('publish docker image')
                 sh '''
                 cd app/
-                docker build -t anyulled/capstone:latest .
                 '''
+                dockerImage = docker.build registry + ":$BUILD_NUMBER"
             }
         }
         stage('Push Image'){
             steps {
-                sh 'docker push anyulled/capstone'
+                docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                      }
+                //sh 'docker push anyulled/capstone'
             }
         }
         stage('Deploy - Green Service') {
@@ -52,6 +55,11 @@ pipeline {
             steps {
                 println('deploy container to blue service')
             }
+        }
+        stage('Remove Unused docker image') {
+          steps{
+            sh "docker rmi $registry:$BUILD_NUMBER"
+          }
         }
     }
 }
