@@ -9,7 +9,6 @@ pipeline {
             steps {
                 println('compile application')
                 sh '''
-                cd app/
                  mvn clean package -DskipTests=true
                 '''
             }
@@ -18,7 +17,6 @@ pipeline {
             steps {
                 println(' test application')
                 sh '''
-                cd app/
                 mvn test
                 '''
             }
@@ -26,9 +24,6 @@ pipeline {
         stage('Build Image') {
             steps {
                 println('publish docker image')
-                sh '''
-                cd app/
-                '''
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
