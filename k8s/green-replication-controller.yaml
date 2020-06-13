@@ -16,6 +16,9 @@ spec:
       containers:
         - name: green
           image: anyulled/capstone
+          env:
+            - name: CAPSTONE_ENVIRONMENT
+              value: "Green Deployment"
           ports:
             - containerPort: 80
               name: http-server
