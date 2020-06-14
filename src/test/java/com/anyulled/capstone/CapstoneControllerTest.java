@@ -1,8 +1,7 @@
 package com.anyulled.capstone;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CapstoneControllerTest {
 
@@ -10,6 +9,9 @@ class CapstoneControllerTest {
 
     @Test
     void sayHello() {
-        assertEquals(capstoneController.sayHello(), "Hello Udacity! my name is Anyul Rivas");
+        System.setProperty("CAPSTONE_ENVIRONMENT", "test");
+        Assertions.assertThat(capstoneController.sayHello())
+                .as("Testing the controller is throwing the proper default message")
+                .isEqualTo("Hello Udacity! my name is Anyul Rivas. null");
     }
 }

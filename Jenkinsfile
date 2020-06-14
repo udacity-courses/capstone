@@ -40,14 +40,17 @@ pipeline {
                     docker.withRegistry( '', registryCredential ) {
                         dockerImage.push()
                     }
-                //sh 'docker push anyulled/capstone'
                 }
             }
         }
-        stage('Deploy - Green Service') {
+        stage('Deploy - Kubernetes containers') {
             steps {
-                println('set current kubectl context')
-                println('deploy container to green service')
+                println('deploy to blue container & service')
+                withAWS(region:'eu-west-2', credentials:'aws-credentials') {
+                    sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
+                    sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
+                    sh 'kubectl apply -f ./k8s/blue-service.yaml'
+                }
             }
         }
         stage('Blue/Green Deployment') {
@@ -55,14 +58,12 @@ pipeline {
                 input 'Deploy to Blue Service?'
             }
         }
-        stage('Deploy - Blue Service') {
+        stage('Deploy - Green Service') {
             steps {
                 println('deploy container to blue service')
-            }
-        }
-        stage('Remove Unused docker image') {
-            steps {
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                withAWS(region:'eu-west-2', credentials:'aws-credentials') {
+                    sh 'kubectl apply -f ./k8s/blue-service.yaml'
+                }
             }
         }
     }
@@ -71,6 +72,7 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true, fingerprint: true
             junit 'target/surefire-reports/TEST-*.xml'
+            sh "docker rmi $registry:$BUILD_NUMBER"
         }
     }
 }
