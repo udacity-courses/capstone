@@ -31,7 +31,7 @@ The Jenkins pipeline will perform the following operations:
 - [x] It should create the EC2 instances (if you are building your own), set the correct networking settings, and deploy software to these instances.
 - [x] As a final step, the Kubernetes cluster will need to be initialized. The Kubernetes cluster initialization can either be done by hand, or with Ansible/Cloudformation at the student’s discretion.
 
-Using [EKS](https://eu-west-2.console.aws.amazon.com/eks/home?region=eu-west-2#/home) instead of **cloudFormation** or **Ansible**, with run a cloudFormation script to configure the cluster and the EC2 Instances.
+Using [EKS](https://eu-west-2.console.aws.amazon.com/eks/home?region=eu-west-2#/home) instead of **cloudFormation** or **Ansible**, which will create 2 separate cloudFormation stacks to configure the cluster itself, and the EC2 Instances for the node group.
 
 ### Step 4: Build your pipeline
 - [x] Construct your pipeline in your GitHub repository. Available [here](https://github.com/anyulled/capstone)
