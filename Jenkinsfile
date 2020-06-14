@@ -47,7 +47,7 @@ pipeline {
             steps {
                 println('deploy to blue container & service')
                 withAWS(region:'eu-west-2', credentials:'aws-credentials') {
-                    sh 'kubectl config use-context arn:aws:eks:eu-west-2:613537795900:cluster/capstonecluster'
+                    sh 'aws eks update-kubeconfig --name capstonecluster --region eu-west-2'
                     sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
                     sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
                     sh 'kubectl apply -f ./k8s/blue-service.yaml'
@@ -73,7 +73,7 @@ pipeline {
         always {
             archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true, fingerprint: true
             junit 'target/surefire-reports/TEST-*.xml'
-            sh "docker rmi $registry:$BUILD_NUMBER"
+            sh "docker rmi $registry:latest"
         }
     }
 }
