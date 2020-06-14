@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.anyulled</groupId>
     <artifactId>capstone-project</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0</version>
     <name>capstone</name>
     <description>Capstone project - Udacity DevOps nanodegree</description>
 
