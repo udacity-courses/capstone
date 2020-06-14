@@ -38,7 +38,7 @@ Using [EKS](https://eu-west-2.console.aws.amazon.com/eks/home?region=eu-west-2#/
 - [x] Set up all the steps that your pipeline will include. See the [Jenkinsfile](Jenkinsfile)
 - [x] Configure a deployment pipeline. *See the [Jenkinsfile](Jenkinsfile)*
 - [x] Include your Dockerfile/source code in the Git repository. [Dockerfile](Dockerfile)
-- [x] Include with your Linting step both a failed Linting screenshot and a successful Linting screenshot to show the Linter working properly.
+- [x] Include with your Linting step both a failed Linting screenshot, and a successful Linting screenshot to show the Linter working properly.
 
 ### Step 5: Test your pipeline
 - [x] Perform builds on your pipeline.
