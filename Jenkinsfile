@@ -30,7 +30,7 @@ pipeline {
             steps {
                 println('publish docker image')
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    dockerImage = docker.build registry + ":latest"
                 }
             }
         }
@@ -47,6 +47,7 @@ pipeline {
             steps {
                 println('deploy to blue container & service')
                 withAWS(region:'eu-west-2', credentials:'aws-credentials') {
+                    sh 'kubectl config use-context arn:aws:eks:eu-west-2:613537795900:cluster/capstonecluster'
                     sh 'kubectl apply -f ./k8s/blue-replication-controller.yaml'
                     sh 'kubectl apply -f ./k8s/green-replication-controller.yaml'
                     sh 'kubectl apply -f ./k8s/blue-service.yaml'
