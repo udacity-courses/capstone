@@ -47,8 +47,13 @@ I preferred to print test error instead of linting errors, as with Java you get 
 
 ### Step 5: Test your pipeline
 - [x] Perform builds on your pipeline.
+
+![build pipeline](screenshots/pipeline-build.png)
 - [x] Verify that your pipeline works as you designed it.
 - [x] Take a screenshot of the Jenkins pipeline showing deployment, and a screenshot of your AWS EC2 page showing the newly created (for blue/green) or modified (for rolling) instances. Make sure you name your instances differently between blue and green deployments.
+
+#### EC2 Instances
+![EC2 Instances](screenshots/ec2-instances.png)
 
 #### Blue deployment
 ![jenkins-pipeline-deployment](screenshots/pipeline-blue-deployment.png)
