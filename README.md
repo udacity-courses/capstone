@@ -4,11 +4,11 @@
 ### Step 1: Propose and Scope the Project
 - [x] For the Docker application you can either use an application which you come up with, or use an open-source application pulled from the Internet, or if you have no idea, you can use an Nginx “Hello World, my name is (student name)” application. 
 
-*A Java application is configured under the `src` folder.*
+*Configured a Java application under the `src` folder.*
 - [x] Pick a deployment type - either rolling deployment or blue/green deployment.
 
 *Blue/green has been chosen as a deployment strategy.*
-- [x] Use Jenkins. [Instructions here](cloudformation/create-jenkins.md)
+- [x] Use Jenkins. [Jenkins Server creation instructions here](cloudformation/create-jenkins.md)
 - [x] Decide which options you will include in your Continuous Integration phase.
 
 The Jenkins pipeline will perform the following operations:
@@ -17,7 +17,7 @@ The Jenkins pipeline will perform the following operations:
 * Perform linting via the checkstyle plugin.
 * Build a docker image.
 * Push the docker image to the docker registry.
-* Deploy the container to kubernetes on either blue or green service. 
+* Deploy the container to kubernetes on blue and/or green service. 
 - [x] Plan what your pipeline will look like.
 
 ### Step 2: Use Jenkins, and implement blue/green or rolling deployment. 
@@ -34,11 +34,16 @@ The Jenkins pipeline will perform the following operations:
 Using [EKS](https://eu-west-2.console.aws.amazon.com/eks/home?region=eu-west-2#/home) instead of **cloudFormation** or **Ansible**, which will create 2 separate cloudFormation stacks to configure the cluster itself, and the EC2 Instances for the node group.
 
 ### Step 4: Build your pipeline
-- [x] Construct your pipeline in your GitHub repository. Available [here](https://github.com/anyulled/capstone)
+- [x] Construct your pipeline in your GitHub repository. Repository Available [here](https://github.com/anyulled/capstone)
 - [x] Set up all the steps that your pipeline will include. See the [Jenkinsfile](Jenkinsfile)
 - [x] Configure a deployment pipeline. *See the [Jenkinsfile](Jenkinsfile)*
 - [x] Include your Dockerfile/source code in the Git repository. [Dockerfile](Dockerfile)
 - [x] Include with your Linting step both a failed Linting screenshot, and a successful Linting screenshot to show the Linter working properly.
+
+I preferred to print test error instead of linting errors, as with Java you get a detailed report on the jenkins job page
+![pipeline failed](screenshots/failing-test.png)
+![pipeline failed](screenshots/failing-test-detail.png)
+
 
 ### Step 5: Test your pipeline
 - [x] Perform builds on your pipeline.

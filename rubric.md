@@ -5,7 +5,7 @@
 
 |CRITERIA|MEETS SPECIFICATIONS|
 |---|---|
-|Create Github repository with project code.|All project code is stored in a GitHub repository and a link to the repository has been provided for reviewers.
+| Create Github repository with project code.|All project code is stored in a GitHub repository and a link to the repository has been provided for reviewers.
 |Use image repository to store Docker images|The project uses a centralized image repository to manage images built in the project. After a clean build, images are pushed to the repository.|
 
 #### Build Docker Container

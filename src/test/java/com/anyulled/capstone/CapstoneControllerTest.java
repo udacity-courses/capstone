@@ -12,6 +12,6 @@ class CapstoneControllerTest {
         System.setProperty("CAPSTONE_ENVIRONMENT", "test");
         Assertions.assertThat(capstoneController.sayHello())
                 .as("Testing the controller is throwing the proper default message")
-                .isEqualTo("failing test");
+                .isEqualTo("Hello Udacity! my name is Anyul Rivas. null");
     }
 }
