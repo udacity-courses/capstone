@@ -43,7 +43,7 @@ connect via ssh to the EC2 instance and run the following script
 
 1. Run `aws configure` and provide your key and secret and set the region to **eu-est-2**
 
-2. Run the following script to configure the EKS cluster.
+2. Run the following script to create the EKS cluster.
 
 ```shell script
 eksctl create cluster \
@@ -59,6 +59,11 @@ eksctl create cluster \
     --zones eu-west-2a \
     --zones eu-west-2b \
     --zones eu-west-2c 
+```
+
+3. Configure `kubectl`
+```shell script
+aws eks --region eu-west-2 update-kubeconfig --name capstonecluster
 ```
 
 Now, the Jenkins server will be listening to new commits on the repository and ready to deploy your app to the Kubernetes cluster on AWS. You can also trigger a manual deploy by clicking on the run icon on the Jenkins pipeline.
