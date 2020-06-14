@@ -37,11 +37,11 @@ Create a pipeline using the Blue Ocean plugin, with the following repository
 
 Configure the `kubectl` context to target the **EKS** Cluster.
 
-connect via ssh to the EC2 instance and run the following script
+connect via ssh to the EC2 instance and run the following scripts:
 
 #### Configure AWS CLI
 
-1. Run `aws configure` and provide your key and secret and set the region to **eu-est-2**
+1. Run `aws configure` and provide your key and secret and set the region to **eu-west-2**
 
 2. Run the following script to create the EKS cluster.
 
