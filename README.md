@@ -43,7 +43,12 @@ Using [EKS](https://eu-west-2.console.aws.amazon.com/eks/home?region=eu-west-2#/
 ### Step 5: Test your pipeline
 - [x] Perform builds on your pipeline.
 - [x] Verify that your pipeline works as you designed it.
-- [x] Take a screenshot of the Jenkins pipeline showing deployment and a screenshot of your AWS EC2 page showing the newly created (for blue/green) or modified (for rolling) instances. Make sure you name your instances differently between blue and green deployments.
+- [x] Take a screenshot of the Jenkins pipeline showing deployment, and a screenshot of your AWS EC2 page showing the newly created (for blue/green) or modified (for rolling) instances. Make sure you name your instances differently between blue and green deployments.
 
-![jenkins-pipeline-deployment](screenshots/step5-jenkins-pipeline.png)
+#### Blue deployment
+![jenkins-pipeline-deployment](screenshots/pipeline-blue-deployment.png)
+![blue deployment](screenshots/blue-deployment.png)
 
+#### Green deployment
+![jenkins-pipeline-deployment](screenshots/pipeline-green-deployment.png)
+![green deployment](screenshots/green-deployment.png)
