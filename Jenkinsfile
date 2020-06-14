@@ -56,14 +56,14 @@ pipeline {
         }
         stage('Blue/Green Deployment') {
             steps {
-                input 'Deploy to Blue Service?'
+                input 'Deploy to Green Service?'
             }
         }
         stage('Deploy - Green Service') {
             steps {
                 println('deploy container to blue service')
                 withAWS(region:'eu-west-2', credentials:'aws-credentials') {
-                    sh 'kubectl apply -f ./k8s/blue-service.yaml'
+                    sh 'kubectl apply -f ./k8s/green-service.yaml'
                 }
             }
         }
