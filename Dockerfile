@@ -1,4 +1,4 @@
-FROM openjdk:11.0.7-jdk-slim
+FROM openjdk:11.0.10-jdk-slim
 MAINTAINER Anyul Rivas <anyulled@gmail.com>
 
 ARG JAR_FILE=target/*.jar
